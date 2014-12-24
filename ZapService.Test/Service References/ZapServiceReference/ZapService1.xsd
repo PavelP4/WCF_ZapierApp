@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.zapservice.com/" elementFormDefault="qualified" targetNamespace="http://www.zapservice.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:63994/ZapService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ZapServiceNS.DataObjects.Requests" />
+  <xs:import schemaLocation="http://localhost:63994/ZapService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ZapServiceNS.DataObjects.Responses" />
+  <xs:element name="GetOK">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOKResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetOKResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Subscribe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ZapServiceNS.DataObjects.Requests" minOccurs="0" name="request" nillable="true" type="q1:SubscribeRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubscribeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ZapServiceNS.DataObjects.Responses" minOccurs="0" name="SubscribeResult" nillable="true" type="q2:SubscribeResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnSubscribe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ZapServiceNS.DataObjects.Requests" minOccurs="0" name="request" nillable="true" type="q3:UnSubscribeRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnSubscribeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ZapServiceNS.DataObjects.Responses" minOccurs="0" name="UnSubscribeResult" nillable="true" type="q4:UnSubscribeResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

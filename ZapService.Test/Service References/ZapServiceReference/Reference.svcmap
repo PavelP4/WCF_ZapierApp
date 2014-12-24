@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bd1da78c-4180-4f61-bbc6-0ee620f9c417" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:63994/ZapService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ZapService.wsdl" MetadataType="Wsdl" ID="e9f3f625-ccb2-4ec3-bff0-52125ab1bd11" SourceId="1" SourceUrl="http://localhost:63994/ZapService.svc?wsdl" />
+    <MetadataFile FileName="ZapService1.wsdl" MetadataType="Wsdl" ID="d97a5632-ee4a-479f-8067-5638784b715b" SourceId="1" SourceUrl="http://localhost:63994/ZapService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="ZapService.xsd" MetadataType="Schema" ID="ae5dbb46-f05c-4aab-bea1-49e5b85545e9" SourceId="1" SourceUrl="http://localhost:63994/ZapService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ZapService1.xsd" MetadataType="Schema" ID="db2d968e-4ca1-40bb-a6d7-8a7082249299" SourceId="1" SourceUrl="http://localhost:63994/ZapService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ZapService2.xsd" MetadataType="Schema" ID="b958a1a0-b547-40a9-8bf4-bddb593501ae" SourceId="1" SourceUrl="http://localhost:63994/ZapService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ZapService3.xsd" MetadataType="Schema" ID="53e077f6-c68a-4253-ade7-fa5ddfe68a7a" SourceId="1" SourceUrl="http://localhost:63994/ZapService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ZapService.disco" MetadataType="Disco" ID="176bf341-f53c-41c5-98c5-a89bce3ee86c" SourceId="1" SourceUrl="http://localhost:63994/ZapService.svc?disco" />
+    <MetadataFile FileName="ZapService4.xsd" MetadataType="Schema" ID="ade8634f-439b-4989-854c-4e4f882a40b7" SourceId="1" SourceUrl="http://localhost:63994/ZapService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
