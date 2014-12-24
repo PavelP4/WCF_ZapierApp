@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZapService.Test", "ZapServi
 		{C65B0F7A-2765-499D-95A0-65722DE5411C} = {C65B0F7A-2765-499D-95A0-65722DE5411C}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZapService.HostWS", "ZapService.HostWS\ZapService.HostWS.csproj", "{A13E6E10-AA29-4D1B-A3A8-9E80931F57D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{9E6442A8-B61D-4604-BC64-7B63943DC006}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E6442A8-B61D-4604-BC64-7B63943DC006}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E6442A8-B61D-4604-BC64-7B63943DC006}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A13E6E10-AA29-4D1B-A3A8-9E80931F57D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A13E6E10-AA29-4D1B-A3A8-9E80931F57D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A13E6E10-AA29-4D1B-A3A8-9E80931F57D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A13E6E10-AA29-4D1B-A3A8-9E80931F57D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

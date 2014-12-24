@@ -14,7 +14,8 @@ namespace ZapService.Test
     [TestClass]
     public class ZapServiceHostTest
     {
-        private string ServiceUri = "http://localhost:63994/ZapService.svc/";
+        //private string ServiceUri = "http://localhost:63994/ZapService.svc/";
+        private string ServiceUri = "http://localhost:8800/ZapService/";
 
         public ZapServiceHostTest()
         {
