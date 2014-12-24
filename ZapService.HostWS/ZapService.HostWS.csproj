@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Install\InstallService.bat" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZapService\ZapService.csproj">
