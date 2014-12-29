@@ -69,6 +69,8 @@
     <None Include="InstallService.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="StartService.bat" />
+    <None Include="StopService.bat" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZapService\ZapService.csproj">
