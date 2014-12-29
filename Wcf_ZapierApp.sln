@@ -14,6 +14,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZapService.Test", "ZapServi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZapService.HostWS", "ZapService.HostWS\ZapService.HostWS.csproj", "{A13E6E10-AA29-4D1B-A3A8-9E80931F57D8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{D0ACFCF5-058E-4916-84EE-36D064DC833F}"
+	ProjectSection(SolutionItems) = preProject
+		Data\ZapServiceDB.sdf = Data\ZapServiceDB.sdf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
