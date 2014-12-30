@@ -80,6 +80,7 @@
     <Compile Include="DataObjects\Requests\SubscribeRequest.cs" />
     <Compile Include="DataObjects\Requests\UnSubscribeRequest.cs" />
     <Compile Include="DataObjects\Responses\BaseResponse.cs" />
+    <Compile Include="DataObjects\Responses\DevicesResponse.cs" />
     <Compile Include="DataObjects\Responses\SubscribeResponse.cs" />
     <Compile Include="DataObjects\Responses\UnSubscribeResponse.cs" />
     <Compile Include="IZapService.cs" />

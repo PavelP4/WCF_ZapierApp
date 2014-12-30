@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Linq;
 using System.ServiceModel;
 using ZapService.DataAccess;
 using ZapService.DataAccess.DataModel;
 using ZapServiceNS.DataObjects;
 using ZapServiceNS.DataObjects.Requests;
 using ZapServiceNS.DataObjects.Responses;
+using System.ServiceModel.Web;
+using System.Net;
 
 
 namespace ZapServiceNS
@@ -21,10 +24,12 @@ namespace ZapServiceNS
 
         public SubscribeResponse Subscribe(SubscribeRequest request)
         {
-            ErrorInfo validateError = Validate_SubscribeRequest(request);
+            WebOperationContext ctx = WebOperationContext.Current;
 
+            ErrorInfo validateError = request.Validate();
             if (validateError != null)
             {
+                ctx.OutgoingResponse.StatusCode = HttpStatusCode.BadRequest;
                 return new SubscribeResponse() { Success = false, Error = validateError };
             }
 
@@ -34,8 +39,9 @@ namespace ZapServiceNS
             using (DBZapService context = new DBZapService())
             {
                 Subscribe newSubscribe = new Subscribe() 
-                { 
-                    Account_Name = "Anonymous",
+                {
+                    Account_Name = request.Account_Name,
+                    Subscription_URL = request.Subscription_URL,
                     Target_URL = request.Target_URL,
                     Event = request.Event,
                     Created = DateTime.Now
@@ -45,58 +51,36 @@ namespace ZapServiceNS
                 {
                     context.Subscribes.Add(newSubscribe);
                     context.SaveChanges();
+
+                    response.Subscription_Id = newSubscribe.Id;
                 }
                 catch (Exception ex)
                 {
                     error = new ErrorInfo(0, string.Format("Error saving to the database: {0}", ex.Message));
-                }                
-
-                response.SubscribeId = newSubscribe.Id;
+                }                       
             }
 
             if (error != null)
             {
+                ctx.OutgoingResponse.StatusCode = HttpStatusCode.InternalServerError;
                 return new SubscribeResponse() { Success = false, Error = error };
             }
             else
-            {
+            {                
+                ctx.OutgoingResponse.StatusCode = HttpStatusCode.Created;
                 return response;
             }
         }
 
-        private ErrorInfo Validate_SubscribeRequest(SubscribeRequest request)
+
+        public UnSubscribeResponse UnSubscribe(UnSubscribeRequest request)
         {
-            ErrorInfo error = null;
-
-            if (request == null)
-            {
-                error = new ErrorInfo(0, "Input data object is null.");
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(request.Target_URL))
-                {
-                    error = new ErrorInfo(0, "The [ Target_URL ] is empty or null.");
-                }
-                else
-                {
-                    if (string.IsNullOrEmpty(request.Event))
-                    {
-                        error = new ErrorInfo(0, "The [ Event ] is empty or null.");
-                    }
-                }
-            }
-
-            return error;
-        }
-
-
-        public UnSubscribeResponse UnSubscribe(string id)
-        {
-            ErrorInfo validateError = Validate_UnSubscribeRequest(id);
-
+            WebOperationContext ctx = WebOperationContext.Current;
+            
+            ErrorInfo validateError = request.Validate();
             if (validateError != null)
             {
+                ctx.OutgoingResponse.StatusCode = HttpStatusCode.BadRequest;
                 return new UnSubscribeResponse() { Success = false, Error = validateError };
             }
 
@@ -109,7 +93,7 @@ namespace ZapServiceNS
 
                 try
                 {
-                    delSubscribe = context.Subscribes.Find(int.Parse(id));
+                    delSubscribe = context.Subscribes.Find(request.Subscription_Id);
                 }
                 catch (Exception ex)
                 {
@@ -118,7 +102,7 @@ namespace ZapServiceNS
 
                 if (delSubscribe == null)
                 {
-                    error = new ErrorInfo(0, string.Format("Data by ID = {0} not found.", id));
+                    error = new ErrorInfo(0, string.Format("Data by [ ID = {0} ] not found.", request.Subscription_Id));
                 }
 
                 delSubscribe.IsUnsubscribed = true;
@@ -131,40 +115,47 @@ namespace ZapServiceNS
                 {
                     error = new ErrorInfo(0, string.Format("Error saving to the database: {0}", ex.Message));
                 }
-            }
-
-
-            //error = new ErrorInfo(0, string.Format("The [ Id ] = [{0}]", id));            
+            }         
 
             if (error != null)
             {
+                ctx.OutgoingResponse.StatusCode = HttpStatusCode.InternalServerError;
                 return new UnSubscribeResponse() { Success = false, Error = error };
             }
             else
             {
+                ctx.OutgoingResponse.StatusCode = HttpStatusCode.OK;
                 return response;
             }                        
         }
 
-        private ErrorInfo Validate_UnSubscribeRequest(string id)
+
+
+        public DevicesResponse Devices()
         {
+            DevicesResponse response = new DevicesResponse();
             ErrorInfo error = null;
 
-            int vId = 0;
-
-            if (int.TryParse(id, out vId))
+            using (DBZapService context = new DBZapService())
             {
-                if (vId <= 0)
+                try
                 {
-                    error = new ErrorInfo(0, "The [ Id ] is not a valid.");
+                    response.Devices = context.Devices.ToList<Device>();
                 }
+                catch (Exception ex)
+                {
+                    error = new ErrorInfo(0, string.Format("Cannot get devices list: {0}", ex.Message));
+                }
+            }
+
+            if (error != null)
+            {
+                return new DevicesResponse() { Success = false, Error = error };
             }
             else
             {
-                error = new ErrorInfo(0, "The [ Id ] is not a numeric value.");
-            }
-
-            return error;
+                return response;
+            } 
         }
     }
 }

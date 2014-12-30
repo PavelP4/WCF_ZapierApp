@@ -14,6 +14,7 @@ namespace ZapService.DataAccess
         }
 
         public DbSet<Subscribe> Subscribes { get; set; }
+        public DbSet<Device> Devices { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

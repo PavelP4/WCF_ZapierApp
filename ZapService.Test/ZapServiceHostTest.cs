@@ -8,6 +8,7 @@ using ZapServiceNS.DataObjects.Requests;
 using ZapService.Test.ZapServiceReference;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using ZapService.DataAccess.DataModel;
 
 namespace ZapService.Test
 {
@@ -15,7 +16,8 @@ namespace ZapService.Test
     public class ZapServiceHostTest
     {
         //private string ServiceUri = "http://localhost:63994/ZapService.svc/";
-        private string ServiceUri = "http://localhost:8800/ZapService/";
+        //private string ServiceUri = "http://localhost:8800/ZapService/";
+        private string ServiceUri = "http://localhost:8800/ZapService.svc/";//82.209.199.146:55008 // 192.168.107.132:8800
 
         public ZapServiceHostTest()
         {
@@ -64,6 +66,8 @@ namespace ZapService.Test
         //
         #endregion
 
+
+        #region REST API Tests
         [TestMethod]
         public async Task Get_OK()
         {    
@@ -90,7 +94,6 @@ namespace ZapService.Test
         [TestMethod]
         public async Task Subscribe_Unsubscribe()
         {
-            // Arrange
             SubscribeRequest requestObj = new SubscribeRequest() { Event = "Trigger_H", Target_URL = @"http://test.com/asdf" };
             SubscribeResponse responseObj = null;
             UnSubscribeResponse responseObj2 = null;
@@ -111,11 +114,11 @@ namespace ZapService.Test
                                 
                 Assert.IsNotNull(responseObj, "responseObj must to be created.");
                 Assert.IsTrue(responseObj.Success, "Success must to be TRUE.");
-                Assert.IsTrue(responseObj.SubscribeId > 0, "SubscribeId must to be more than 0.");
+                Assert.IsTrue(responseObj.Subscription_Id > 0, "SubscribeId must to be more than 0.");
 
 
                 // UnSubscribe
-                response = await client.DeleteAsync(string.Format("api/hooks/{0}", responseObj.SubscribeId));
+                response = await client.DeleteAsync(string.Format("api/hooks/{0}", responseObj.Subscription_Id));
                 
                 if (response.IsSuccessStatusCode)
                 {
@@ -130,7 +133,6 @@ namespace ZapService.Test
         [TestMethod]
         public async Task Unsubscribe()
         {
-            // Arrange
             UnSubscribeResponse responseObj2 = null;
 
             using (HttpClient client = new HttpClient())
@@ -152,40 +154,52 @@ namespace ZapService.Test
                 Assert.IsTrue(responseObj2.Success, "Success must to be TRUE.");
             }
         }
-        
+        #endregion 
 
 
         [TestMethod]
         public async Task AutoProxy_GetOK()
         {
-            // Arrange
-            ZapServiceClient client = new ZapServiceClient();            
             String responseObj = null;
 
-            // Act
-            responseObj = await client.GetOKAsync();
-            client.Close();
-
-            // Assert
+            using (ZapServiceClient client = new ZapServiceClient())
+            {             
+                responseObj = await client.GetOKAsync();
+            }       
+            
             Assert.IsTrue(responseObj.CompareTo("OK!!!") == 0, "responseObj must to be [OK!!!]...");
         }
 
         [TestMethod]
         public async Task AutoProxy_Subscribe()
         {
-            // Arrange
             ZapServiceClient client = new ZapServiceClient();
             SubscribeRequest requestObj = new SubscribeRequest() { Event = "Trigger_H", Target_URL = @"http://test.com/asdf"};
             SubscribeResponse responseObj = null;
             
-            // Act
             responseObj = await client.SubscribeAsync(requestObj);
             client.Close();
 
-            // Assert
             Assert.IsNotNull(responseObj, "responseObj must to be created...");
             Assert.IsTrue(responseObj.Success, "Success must to be TRUE...");
-            Assert.IsTrue(responseObj.SubscribeId > 0, "SubscribeId must to be bigger than 0...");
+            Assert.IsTrue(responseObj.Subscription_Id > 0, "SubscribeId must to be bigger than 0...");
+        }
+
+        [TestMethod]
+        public async Task AutoProxy_Devices()
+        {
+            DevicesResponse responseObj = null;
+
+            using (ZapServiceClient client = new ZapServiceClient())
+            {
+                responseObj = await client.DevicesAsync();
+            }
+
+            Assert.IsNotNull(responseObj, "responseObj must to be created...");
+            Assert.IsTrue(responseObj.Success, "Success must to be TRUE...");
+            Assert.IsTrue(responseObj.Devices.Count > 0, "Devices.Count must to be bigger than 0...");
+                Device firstDevice = responseObj.Devices[0];
+                Assert.IsTrue(firstDevice.Name.CompareTo("Device_1") == 0, "The first device name must to be \'Device_1\'...");
         }
     }
 }

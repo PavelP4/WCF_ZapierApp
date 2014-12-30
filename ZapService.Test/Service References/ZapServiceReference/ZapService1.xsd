@@ -31,14 +31,26 @@
   <xs:element name="UnSubscribe">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ZapServiceNS.DataObjects.Requests" minOccurs="0" name="request" nillable="true" type="q3:UnSubscribeRequest" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UnSubscribeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ZapServiceNS.DataObjects.Responses" minOccurs="0" name="UnSubscribeResult" nillable="true" type="q4:UnSubscribeResponse" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ZapServiceNS.DataObjects.Responses" minOccurs="0" name="UnSubscribeResult" nillable="true" type="q3:UnSubscribeResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Devices">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DevicesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ZapServiceNS.DataObjects.Responses" minOccurs="0" name="DevicesResult" nillable="true" type="q4:DevicesResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -6,12 +6,12 @@ namespace ZapServiceNS.DataObjects.Responses
     [DataContract]
     public class SubscribeResponse : BaseResponse
     {
-        [DataMember(Name="subscribeid")]
-        public int SubscribeId { get; set; }
+        [DataMember(Name = "subscription_id")]
+        public int Subscription_Id { get; set; }
 
         public SubscribeResponse()
         {
-            SubscribeId = -1;
+            Subscription_Id = -1;
         }
     }
 }

@@ -26,4 +26,12 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="UnSubscribeResponse" nillable="true" type="tns:UnSubscribeResponse" />
+  <xs:complexType name="DevicesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DevicesResponse" nillable="true" type="tns:DevicesResponse" />
 </xs:schema>

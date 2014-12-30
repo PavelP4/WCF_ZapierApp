@@ -15,11 +15,14 @@ namespace ZapService.DataAccess.DataModel
         [MaxLength(100)]
         public string Account_Name { get; set; }
 
+        [Required]
+        public string Subscription_URL { get; set; }
+
         [Required]        
         public string Target_URL { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string Event { get; set; }
 
         [Required]

@@ -27,6 +27,12 @@
   <wsdl:message name="IZapService_UnSubscribe_OutputMessage">
     <wsdl:part name="parameters" element="tns:UnSubscribeResponse" />
   </wsdl:message>
+  <wsdl:message name="IZapService_Devices_InputMessage">
+    <wsdl:part name="parameters" element="tns:Devices" />
+  </wsdl:message>
+  <wsdl:message name="IZapService_Devices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DevicesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IZapService">
     <wsdl:operation name="GetOK">
       <wsdl:input wsaw:Action="http://www.zapservice.com/IZapService/GetOK" message="tns:IZapService_GetOK_InputMessage" />
@@ -39,6 +45,10 @@
     <wsdl:operation name="UnSubscribe">
       <wsdl:input wsaw:Action="http://www.zapservice.com/IZapService/UnSubscribe" message="tns:IZapService_UnSubscribe_InputMessage" />
       <wsdl:output wsaw:Action="http://www.zapservice.com/IZapService/UnSubscribeResponse" message="tns:IZapService_UnSubscribe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Devices">
+      <wsdl:input wsaw:Action="http://www.zapservice.com/IZapService/Devices" message="tns:IZapService_Devices_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.zapservice.com/IZapService/DevicesResponse" message="tns:IZapService_Devices_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

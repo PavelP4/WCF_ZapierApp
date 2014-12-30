@@ -68,6 +68,10 @@
     <Compile Include="ZapServiceHostTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ZapService.DataAccess\ZapService.DataAccess.csproj">
+      <Project>{9265aea5-879d-4fc5-958d-839630aae418}</Project>
+      <Name>ZapService.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZapService\ZapService.csproj">
       <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>
       <Name>ZapService</Name>
@@ -78,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\ZapServiceNS.DataObjects.Responses.DevicesResponse.datasource" />
     <None Include="Properties\DataSources\ZapServiceNS.DataObjects.Responses.SubscribeResponse.datasource" />
     <None Include="Properties\DataSources\ZapServiceNS.DataObjects.Responses.UnSubscribeResponse.datasource" />
     <None Include="Service References\ZapServiceReference\ZapService.wsdl" />

@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModel\Device.cs" />
     <Compile Include="DataModel\Subscribe.cs" />
     <Compile Include="DBZapService.cs" />
     <Compile Include="Migrations\201412201412218_Initial_20142012.cs" />
@@ -62,6 +63,14 @@
     <Compile Include="Migrations\201412201547237_Add_Created.cs" />
     <Compile Include="Migrations\201412201547237_Add_Created.Designer.cs">
       <DependentUpon>201412201547237_Add_Created.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412291300269_Devices.cs" />
+    <Compile Include="Migrations\201412291300269_Devices.Designer.cs">
+      <DependentUpon>201412291300269_Devices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412300634164_Change_Subscribe.cs" />
+    <Compile Include="Migrations\201412300634164_Change_Subscribe.Designer.cs">
+      <DependentUpon>201412300634164_Change_Subscribe.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +85,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412201547237_Add_Created.resx">
       <DependentUpon>201412201547237_Add_Created.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412291300269_Devices.resx">
+      <DependentUpon>201412291300269_Devices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412300634164_Change_Subscribe.resx">
+      <DependentUpon>201412300634164_Change_Subscribe.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

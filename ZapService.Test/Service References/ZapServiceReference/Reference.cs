@@ -28,10 +28,16 @@ namespace ZapService.Test.ZapServiceReference {
         System.Threading.Tasks.Task<ZapServiceNS.DataObjects.Responses.SubscribeResponse> SubscribeAsync(ZapServiceNS.DataObjects.Requests.SubscribeRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.zapservice.com/IZapService/UnSubscribe", ReplyAction="http://www.zapservice.com/IZapService/UnSubscribeResponse")]
-        ZapServiceNS.DataObjects.Responses.UnSubscribeResponse UnSubscribe(ZapServiceNS.DataObjects.Requests.UnSubscribeRequest request);
+        ZapServiceNS.DataObjects.Responses.UnSubscribeResponse UnSubscribe(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.zapservice.com/IZapService/UnSubscribe", ReplyAction="http://www.zapservice.com/IZapService/UnSubscribeResponse")]
-        System.Threading.Tasks.Task<ZapServiceNS.DataObjects.Responses.UnSubscribeResponse> UnSubscribeAsync(ZapServiceNS.DataObjects.Requests.UnSubscribeRequest request);
+        System.Threading.Tasks.Task<ZapServiceNS.DataObjects.Responses.UnSubscribeResponse> UnSubscribeAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.zapservice.com/IZapService/Devices", ReplyAction="http://www.zapservice.com/IZapService/DevicesResponse")]
+        ZapServiceNS.DataObjects.Responses.DevicesResponse Devices();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.zapservice.com/IZapService/Devices", ReplyAction="http://www.zapservice.com/IZapService/DevicesResponse")]
+        System.Threading.Tasks.Task<ZapServiceNS.DataObjects.Responses.DevicesResponse> DevicesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -77,12 +83,20 @@ namespace ZapService.Test.ZapServiceReference {
             return base.Channel.SubscribeAsync(request);
         }
         
-        public ZapServiceNS.DataObjects.Responses.UnSubscribeResponse UnSubscribe(ZapServiceNS.DataObjects.Requests.UnSubscribeRequest request) {
-            return base.Channel.UnSubscribe(request);
+        public ZapServiceNS.DataObjects.Responses.UnSubscribeResponse UnSubscribe(string id) {
+            return base.Channel.UnSubscribe(id);
         }
         
-        public System.Threading.Tasks.Task<ZapServiceNS.DataObjects.Responses.UnSubscribeResponse> UnSubscribeAsync(ZapServiceNS.DataObjects.Requests.UnSubscribeRequest request) {
-            return base.Channel.UnSubscribeAsync(request);
+        public System.Threading.Tasks.Task<ZapServiceNS.DataObjects.Responses.UnSubscribeResponse> UnSubscribeAsync(string id) {
+            return base.Channel.UnSubscribeAsync(id);
+        }
+        
+        public ZapServiceNS.DataObjects.Responses.DevicesResponse Devices() {
+            return base.Channel.Devices();
+        }
+        
+        public System.Threading.Tasks.Task<ZapServiceNS.DataObjects.Responses.DevicesResponse> DevicesAsync() {
+            return base.Channel.DevicesAsync();
         }
     }
 }

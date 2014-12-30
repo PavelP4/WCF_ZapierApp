@@ -22,12 +22,16 @@ namespace ZapServiceNS
         string GetOK();
                 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "api/hooks", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "POST", UriTemplate = "api/hooks/subscribe", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         SubscribeResponse Subscribe(SubscribeRequest request);
 
         [OperationContract]
-        [WebInvoke(Method = "DELETE", UriTemplate = "api/hooks/{id}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        UnSubscribeResponse UnSubscribe(string id);
+        [WebInvoke(Method = "DELETE", UriTemplate = "api/hooks/unsubscribe", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        UnSubscribeResponse UnSubscribe(UnSubscribeRequest request);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "api/devices", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        DevicesResponse Devices();
     }
 
 }
