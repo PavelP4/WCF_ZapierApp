@@ -17,7 +17,7 @@ namespace ZapService.Test
     {
         //private string ServiceUri = "http://localhost:63994/ZapService.svc/";
         //private string ServiceUri = "http://localhost:8800/ZapService/";
-        private string ServiceUri = "http://localhost:8800/ZapService.svc/";//82.209.199.146:55008 // 192.168.107.132:8800
+        private string ServiceUri = "http://192.168.107.132:8800/ZapService.svc/";//82.209.199.146:55008 // 192.168.107.132:8800
 
         public ZapServiceHostTest()
         {

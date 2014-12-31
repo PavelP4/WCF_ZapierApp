@@ -14,7 +14,7 @@ namespace ZapServiceNS
 {
     [ServiceContract(Namespace = "http://www.zapservice.com/")]
     public interface IZapService
-    {            
+    {           
         [OperationContract]
         //[WebInvoke(Method = "GET", UriTemplate = "api/test", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         [WebGet(UriTemplate = "api/test", ResponseFormat = WebMessageFormat.Json)]
